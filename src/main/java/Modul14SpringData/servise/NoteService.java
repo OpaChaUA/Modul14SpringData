@@ -32,7 +32,7 @@ public class NoteService {
             existingNote.setContent(note.getContent());
             noteRepository.save(existingNote);
         } else {
-            throw new IllegalArgumentException("No note found for id: " + id); // Якщо нотатку не знайдено, кидаємо виняток
+            throw new IllegalArgumentException("No note found for id: " + id);
         }
     }
 
