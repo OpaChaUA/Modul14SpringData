@@ -8,32 +8,30 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
 @RequiredArgsConstructor
 @Service
 public class NoteService {
     private final NoteRepository noteRepository;
+
     public List<Note> allNote() {
-        return  (List<Note>) noteRepository.findAll();
+
+        return (List<Note>) noteRepository.findAll();
     }
 
     public Note addNewNote(Note note) {
+
         return noteRepository.save(note);
     }
 
     public void deleteById(long id) {
-      noteRepository.delete(getById(id));
+
+        noteRepository.delete(getById(id));
     }
 
     public void update(Note note) {
-        long id = note.getId();
-        Note existingNote = getById(id);
-        if (existingNote != null) {
-            existingNote.setTitle(note.getTitle());
-            existingNote.setContent(note.getContent());
-            noteRepository.save(existingNote);
-        } else {
-            throw new IllegalArgumentException("No note found for id: " + id);
-        }
+        getById(note.getId());
+        noteRepository.save(note);
     }
 
 
