@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class NoteController {
     private final NoteService noteService;
-    @GetMapping("/add")
+    @PostMapping("/add")
     public ModelAndView addNote(@RequestParam("note") Note addNote){
         noteService.addNewNote(addNote);
         ModelAndView result = new ModelAndView("redirect:/note/list");
@@ -30,7 +30,7 @@ public class NoteController {
         result.addObject("notes", noteService.allNote());
         return result;
     }
-    @PostMapping("/delet")
+    @PostMapping("/delete")
     public ModelAndView deleteNote(@RequestParam("id") long id){
         noteService.deleteById(id);
         ModelAndView result = new ModelAndView("redirect:/note/list");

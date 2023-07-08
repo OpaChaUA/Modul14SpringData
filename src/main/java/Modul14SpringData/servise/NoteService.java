@@ -3,12 +3,12 @@ package Modul14SpringData.servise;
 
 import Modul14SpringData.entity.Note;
 import Modul14SpringData.repository.NoteRepository;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 @RequiredArgsConstructor
-
 @Service
 public class NoteService {
     private final NoteRepository noteRepository;
