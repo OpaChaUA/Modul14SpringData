@@ -13,13 +13,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class NoteController {
     private final NoteService noteService;
-    @PostMapping("/add")
+    @GetMapping("/create")
+    public ModelAndView showCreateForm() {
+        ModelAndView result = new ModelAndView("create");
+        result.addObject("note", new Note());
+        return result;
+    }
+
+    @PostMapping("/create")
     public ModelAndView addNote(@ModelAttribute("note") Note addNote) {
         noteService.addNewNote(addNote);
         ModelAndView result = new ModelAndView("redirect:/note/list");
-        result.addObject("notes", noteService.allNote());
+        result.addObject("note", noteService.allNote());
         return result;
     }
+
 
 
     @GetMapping("/list")
